@@ -1,0 +1,26 @@
+﻿@model Ass_handtph26146.Models.Hoa
+
+@{
+	ViewData["Title"] = "Details";
+}
+
+<h2>Chi tiết sản phẩm</h2>
+
+<div>
+	<h4>Hoa</h4>
+	<hr />
+	<h1>@Html.DisplayFor(model => model.Ten)</h1>
+	<p><trong>Mô tả hoa: </trong>@Html.DisplayFor(model => model.MoTa) </p>
+	<p><trong>Số lượng hàng còn: </trong>@Html.DisplayFor(model => model.SoLuongTon) </p>
+	<p><trong>Giá bán: </trong>@Html.DisplayFor(model => model.GiaNhap) </p>
+
+	
+	
+</div>
+
+<div>
+	@Html.ActionLink("Edit", "Edit", new {id=Model.Id }) |
+	@Html.ActionLink("AddToCart", "AddCart","Cart", new {id=Model.Id }) |
+	<a asp-action="ShowListHoa">Back to List</a>
+</div>
+

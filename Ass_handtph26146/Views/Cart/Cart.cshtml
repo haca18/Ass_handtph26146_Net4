@@ -1,0 +1,77 @@
+﻿@model List<Ass_handtph26146.Models.GioHangCT>
+
+
+<h2>GIỎ HÀNG</h2>
+
+@if (Model.Count > 0)
+{
+    decimal total = 0;
+    int stt = 1;
+
+    <table class="table">
+        <tr>
+            <th>STT</th>
+            <th>Sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th></th>
+        </tr>
+        @foreach (var cartitem in Model)
+        {
+            var thanhtien = cartitem.SoLuong * cartitem.DonGia;           
+            total += thanhtien;
+
+            <tr>
+                
+                <td>@(stt++)</td>
+                <td>@cartitem.Name</td>
+                <td>@(cartitem.DonGia.ToString("n0"))</td>
+                <td><input type="number" min="1" max=@cartitem.DonGiaKhiGiam asp-for="@cartitem.SoLuong" id="@($"quantity-{cartitem.IdHoa}")" /></td>
+                <td>@(thanhtien.ToString("n0"))</td>
+                <td>
+                    <a class="btn btn-success updatecartitem"
+                    data-productid="@cartitem.IdHoa">
+                        @Html.ActionLink("Cập nhật", "UpdateCart","Cart", new {id=cartitem.IdHoa }) |
+                    </a>
+                    @Html.ActionLink("Xóa", "RemoveCart","Cart", new {id=cartitem.IdHoa }) |
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="4" class="text-right">Tổng tiền</td>
+            <td>@(total.ToString("n0"))</td>
+            <td></td>
+        </tr>
+    </table>
+
+    <a asp-controller="Product" asp-action="Checkout" class="btn btn-success">Gửi đơn hàng</a>
+
+    @section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".updatecartitem").click(function (event) {
+                event.preventDefault();
+                var productid = $(this).attr("data-productid");
+                var SoLuong = $("#SoLuong-" + productid).val();
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("/Cart/Updatecart")",
+                    data: {
+                        productid: productid,
+                        SoLuong: SoLuong
+                    },
+                    success: function (result) {
+                        window.location.href = "@Url.Action("Ccart/Updatecart")";
+                    }
+                });
+            });
+        });
+    </script>
+      }
+
+}
+else
+{
+    <p class="alert alert-danger">Giỏ hàng trống</p>
+}

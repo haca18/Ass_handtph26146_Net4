@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>@ViewBag.Title</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="iecss.css" />
+	<![endif]-->
+</head>
+<link href="~/css/style.css" rel="stylesheet" />
+<script src="~/js/boxover.js"></script>
+<body>
+	<div id="main_container">
+		<div id="header">
+			<div class="top_right">
+				<div class="languages">
+					<div class="lang_text">Languages:</div>
+					<a href="#" class="lang"><img src="d:\desktop\máy tính\ki5\net4\ass_handtph26146\ass_handtph26146\assets\clienten.gif" alt="" border="0" /></a> <a href="#" class="lang"><img src="d:\desktop\máy tính\ki5\net4\ass_handtph26146\ass_handtph26146\assets\clientde.gif" alt="" border="0" /></a>
+				</div>
+				<div class="big_banner"> <a href="#"><img src="d:\desktop\máy tính\ki5\net4\ass_handtph26146\ass_handtph26146\assets\clientbanner728.jpg" alt="" border="0" /></a> </div>
+			</div>
+			<div id="logo"> <a href="#"><img src="d:\desktop\máy tính\ki5\net4\ass_handtph26146\ass_handtph26146\assets\clientlogo.png" alt="" border="0" width="182" height="85" /></a> </div>
+		</div>
+		<div id="main_content">
+			<div id="menu_tab">
+				<ul class="menu" style="background-color:yellowgreen" >
+					
+					<li><a href="~/Home/Index" class="nav "> Home </a></li>
+					<li class="divider"></li>
+					<li><a href="~/SanPham/ShowListHoa" class="nav">ShowListHoa</a></li>
+					<li class="divider"></li>							
+					<li><a class="nav" @Html.ActionLink("Cart", "Cart","Cart" )> </a></li>
+					<li class="divider"></li>
+					<li><a class="nav" @Html.ActionLink("Contact Us", "Contact","Introduct" )></a></li>
+					<li class="divider"></li>
+					<li><a class="nav" @Html.ActionLink("About Us", "About","Introduct" )></a></li>
+					<li class="divider"></li>
+					<li><a href="#" class="nav">My account</a></li>
+					<li class="divider"></li>
+					<li><a href="#" class="nav">Sign Up</a></li>
+					<li class="divider"></li>
+
+				</ul>
+				
+			</div>
+			<!-- end of menu tab -->
+			<div class="crumb_navigation"> Navigation: <span class="current">Home</span> </div>
+			<div class="left_content">
+				<div class="title_box">Categories</div>
+				<ul class="left_menu">
+					<li class="odd"><a href="#">Lãng hoa</a></li>
+					<li class="even"><a href="#">Bó hoa</a></li>
+					<li class="odd"><a href="#">Cành hoa</a></li>
+					<li class="even"><a href="#">Hoa nhập khẩu</a></li>
+					<li class="odd"><a href="#">Hoa cưới</a></li>
+					<li class="even"><a href="#">Hoa đám tang</a></li>
+
+				</ul>
+				<div class="title_box">Hoa đặc biệt</div>
+				<div class="border_box">
+					<div class="product_title"><a href="#">Hoa mẫu đơn</a></div>
+					<div class="product_img"><a href="#"><img src="d:\desktop\máy tính\ki5\net4\ass_handtph26146\ass_handtph26146\assets\clientp1.jpg" alt="" border="0" /></a></div>
+					<div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
+				</div>
+				<div class="title_box">Newsletter</div>
+				<div class="border_box">
+					<input type="text" name="newsletter" class="newsletter_input" value="your email" />
+					<a href="#" class="join">subscribe</a>
+				</div>
+				<div class="banner_adds"> <a href="#"><img src="d:\desktop\máy tính\ki5\net4\ass_handtph26146\ass_handtph26146\assets\clientbann2.jpg" alt="" border="0" /></a> </div>
+			</div>
+			<!-- end of left content -->
+			<div class="center_content">
+				@RenderBody()
+			</div>
+			<!-- end of center content -->
+			<div class="right_content">
+				<div class="title_box">Search</div>
+				<div class="border_box">
+					<input type="text" name="newsletter" class="newsletter_input" value="keyword" />
+					<a href="#" class="join">search</a>
+				</div>
+				<div class="shopping_cart">
+					<div class="title_box">Shopping cart</div>
+					<div class="cart_details">
+						3 items <br />
+						<span class="border_cart"></span> Total: <span class="price">350$</span>
+					</div>
+					<div class="cart_icon"><a href="#"><img src="d:\desktop\máy tính\ki5\net4\ass_handtph26146\ass_handtph26146\assets\clientshoppingcart.png" alt="" width="35" height="35" border="0" /></a></div>
+				</div>
+				<div class="title_box">What’s new</div>
+				<div class="border_box">
+					<div class="product_title"><a href="#">Hoa trà</a></div>
+					<div class="product_img"><a href="#"><img src="d:\desktop\máy tính\ki5\net4\ass_handtph26146\ass_handtph26146\assets\clientp2.jpg" alt="" border="0" /></a></div>
+					<div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
+				</div>
+				<div class="title_box">Combo siu ưu đãi</div>
+				<ul class="left_menu">
+					<li class="odd"><a href="#">Mua hoa tặng ngừi iu</a></li>
+					<li class="even"><a href="#">Mua hoa đi sinh nhật</a></li>
+					<li class="odd"><a href="#">Mua hoa làm quà</a></li>
+					<li class="even"><a href="#">Mua hoa cắm lọ</a></li>
+					<li class="odd"><a href="#">Mua hoa trang trí phòng</a></li>
+
+				</ul>
+				<div class="banner_adds"> <a href="#"><img src="d:\desktop\máy tính\ki5\net4\ass_handtph26146\ass_handtph26146\assets\clientbann1.jpg" alt="" border="0" /></a> </div>
+			</div>
+			<!-- end of right content -->
+		</div>
+		<!-- end of main content -->
+		
+	</div>
+	<!-- end of main_container -->
+	@RenderSection("Scripts", required: false)
+</body>
+
+</html>

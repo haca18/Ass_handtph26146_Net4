@@ -1,0 +1,139 @@
+﻿@model IEnumerable<Ass_handtph26146.Models.Hoa>
+<style>
+	.prod_box {
+		width: 173px;
+		height: auto;
+		float: left;
+		padding: 10px 10px 10px 11px;
+		margin: 10px;
+	}
+
+	.center_prod_box {
+		width: 173px;
+		height: auto;
+		float: left;
+		text-align: center;
+		padding: 0px;
+		margin: 10px;
+		border: 1px #00CC33 solid;
+	}
+
+	.prod_details_tab {
+		width: 173px;
+		height: 31px;
+		float: left;
+		margin: 3px 0 0 0;
+	}
+
+	img.left_bt {
+		float: left;
+		padding: 6px 0 0 6px;
+	}
+
+	a.prod_details {
+		width: 75px;
+		height: 24px;
+		display: block;
+		float: right;
+		background: url(images/link_bg.gif) no-repeat center;
+		margin: 2px 5px 0 0;
+		text-align: center;
+		line-height: 24px;
+		text-decoration: none;
+		color: #159dcc;
+	}
+
+	a.prod_compare {
+		width: 75px;
+		height: 24px;
+		display: block;
+		float: left;
+		background: url(images/link_bg.gif) no-repeat center;
+		margin: 2px 0 0 5px;
+		text-align: center;
+		line-height: 24px;
+		text-decoration: none;
+		color: #159dcc;
+	}
+
+	a.prod_buy {
+		width: 75px;
+		height: 24px;
+		display: block;
+		float: left;
+		background: url(images/link_bg.gif) no-repeat center;
+		margin: 2px 0 0 5px;
+		text-align: center;
+		line-height: 24px;
+		text-decoration: none;
+		color: #006600;
+	}
+
+	.product_title {
+		color: #ff8a00;
+		padding: 5px 0 5px 0;
+		font-weight: bold;
+	}
+
+		.product_title a {
+			text-decoration: none;
+			color: #ff8a00;
+			padding: 5px 0 5px 0;
+			font-weight: bold;
+		}
+
+			.product_title a:hover {
+				color: #064E5A;
+			}
+
+			.product_img{
+padding:5px 0 5px 0;
+}
+.prod_price{
+padding:5px 0 5px 0;
+}
+span.reduce{
+color:#666666;
+text-decoration:line-through;
+}
+span.price{
+color: #ff8a00;
+}
+</style>
+@{
+	ViewBag.Title = "Hoa";
+	Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<h1 class="services_taital">Services </h1>
+<p class="services_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration</p>
+<div class="services_section_2">
+	<h1>Hoa</h1>
+
+	<p>
+		<a asp-action="Create">Create New</a>
+	</p>
+	<table class="table">
+
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<!-- services section end -->
+				<div class="prod_box">
+					<div class="center_prod_box">
+						<div class="product_title"><a href="#"> @Html.DisplayFor(modelItem => item.Ten)</a></div>
+						<div class="product_img"><a href="#"><img src="~/images/images/img-1.png" alt="" border="0" /></a></div>
+						<div class="prod_price"><span class="reduce">300000</span> <span class="price"> @Html.DisplayFor(modelItem => item.GiaBan)</span></div>
+					</div>
+
+					<div class="prod_details_tab">
+						<a class="prod_details" @Html.ActionLink("Details", "Details", new { id=item.Id })></a>
+						<a class="prod_details" @Html.ActionLink("Edit", "Edit", new {id=item.Id })></a>
+						
+
+					</div>
+				</div>
+			}
+			
+		</tbody>
+		@*<a asp-action="Home/Index2">Back List</a>*@
+	</table>
