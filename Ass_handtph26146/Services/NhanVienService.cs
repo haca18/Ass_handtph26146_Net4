@@ -66,7 +66,25 @@ namespace Ass_handtph26146.Services
 
 		public bool UpdateNv(NhanVien nv)
 		{
-			throw new NotImplementedException();
-		}
+            try
+            {
+                var nhanvien = context.NhanViens.Find(nv.Id);
+				nhanvien.Id = nv.Id;
+				nhanvien.IdCV = nv.IdCV;
+				nhanvien.MatKhau = nv.MatKhau;
+				nhanvien.Sdt = nv.Sdt;
+				nhanvien.Ten = nv.Ten;
+				nhanvien.TrangThai = nv.TrangThai;
+                context.NhanViens.Update(nhanvien);
+                context.SaveChanges();
+                return true;
+
+            }
+            catch (Exception)
+            {
+                return false;
+
+            }
+        }
 	}
 }

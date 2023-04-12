@@ -1,40 +1,86 @@
-﻿using Ass_handtph26146.IServices;
+﻿
+using Ass_handtph26146.IServices;
 using Ass_handtph26146.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Ass_handtph26146.Services
 {
 	public class KhachHangService : IKhachHangService
 	{
-		public bool CreateKh(KhachHang kh)
+        HoaDBContext context;
+		public KhachHangService()
 		{
-			throw new NotImplementedException();
+			context= new HoaDBContext();
 		}
+        public bool CreateKh(KhachHang kh)
+		{
+            try
+            {
+                context.KhachHangs.Add(kh);
+                context.SaveChanges();
+                return true;
+
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
 
 		public bool DeleteKh(Guid id)
 		{
-			throw new NotImplementedException();
-		}
+            try
+            {
+                var kh = context.KhachHangs.Find(id);
+                context.KhachHangs.Remove(kh);
+                context.SaveChanges();
+                return true;
+
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
 
 		public List<KhachHang> GetAllKh()
 		{
-			throw new NotImplementedException();
+			return context.KhachHangs.ToList();
 		}
 
 		public KhachHang GetKhByID(Guid id)
 		{
-			throw new NotImplementedException();
-		}
+            return context.KhachHangs.FirstOrDefault(p => p.Id == id);
+        }
 
 		public List<KhachHang> GetKhByName(string name)
 		{
-			throw new NotImplementedException();
-		}
+            return context.KhachHangs.Where(p => p.Ten.Contains(name)).ToList();
+        }
 
 		public bool UpdateKh(KhachHang kh)
 		{
-			throw new NotImplementedException();
-		}
+            try
+            {
+                var khach = context.KhachHangs.Find(kh.Id);
+                khach.Id = kh.Id;
+                khach.MatKhau=kh.MatKhau;
+                khach.Sdt = kh.Sdt;
+                khach.Ten = kh.Ten;
+                context.KhachHangs.Update(khach);
+                context.SaveChanges();
+                return true;
+
+            }
+            catch (Exception)
+            {
+                return false;
+
+            }
+        }
 	}
 }

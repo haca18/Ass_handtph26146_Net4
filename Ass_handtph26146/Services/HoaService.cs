@@ -87,6 +87,29 @@ namespace Ass_handtph26146.Services
             }
         }
 
+        public void SLuongSauMua(Hoa p, int soLuong)
+        {
+            try
+            {
+                var hoa = context.Hoas.Find(p.Id);
+                hoa.Ten = p.Ten;
+                hoa.Nsx = p.Nsx;
+                hoa.Loai = p.Loai;
+                hoa.MoTa = p.MoTa;
+                hoa.SoLuongTon = p.SoLuongTon-soLuong;
+                hoa.GiaNhap = p.GiaNhap;
+                hoa.GiaBan = p.GiaBan;
+                hoa.TinhTrang = p.TinhTrang;
+                context.Hoas.Update(hoa);
+                context.SaveChanges();
+                
 
+            }
+            catch (Exception)
+            {
+                throw;
+
+            }
+        }
     }
 }
