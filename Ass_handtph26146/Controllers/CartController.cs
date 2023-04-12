@@ -8,6 +8,8 @@ using System;
 using Newtonsoft.Json;
 using Ass_handtph26146.Services;
 using System.Linq;
+using Microsoft.CodeAnalysis;
+using Microsoft.AspNetCore.DataProtection.KeyManagement.Internal;
 
 namespace Ass_handtph26146.Controllers
 {
@@ -21,7 +23,7 @@ namespace Ass_handtph26146.Controllers
 		public CartController(ILogger<CartController> logger)
 		{
 			_logger = logger;
-			
+			hoaService = new HoaService();
 			db = new HoaDBContext();
 			_themghService = new ThemGhService();
 
@@ -38,7 +40,7 @@ namespace Ass_handtph26146.Controllers
 			var hoa = hoaService.GetHoaByID(id);
 			if (hoa == null)
 			{
-				return NotFound("Không có sản phẩm này");
+				return Content("Không có sản phẩm này");
 			}
 
 			//Xử lý đưa vào cart
@@ -61,7 +63,7 @@ namespace Ass_handtph26146.Controllers
 			return RedirectToAction("Cart");
 		}
 
-		[Route("/", Name = "cart")]
+		//[Route("/", Name = "cart")]
 		public IActionResult Cart()
 		{
 			return View(_themghService.GetCartItems(HttpContext.Session));
@@ -74,7 +76,6 @@ namespace Ass_handtph26146.Controllers
 			var cartitem = cart.Find(p => p.IdHoa == id);
 			if (cartitem != null)
 			{
-
 				cart.Remove(cartitem);
 			}
 
@@ -83,8 +84,8 @@ namespace Ass_handtph26146.Controllers
 		}
 
 		/// Cập nhật
-		[Route("/updatecart", Name = "updatecart")]
-		[HttpPost]
+		//[Route("/updatecart", Name = "updatecart")]
+		//[HttpPost]
 		public IActionResult UpdateCart(Guid productid, [FromForm] int quantity)
 		{
 			// Cập nhật Cart thay đổi số lượng quantity ...
@@ -100,9 +101,32 @@ namespace Ass_handtph26146.Controllers
 			return Ok();
 		}
 
-		public IActionResult Checkout()
+		public IActionResult DatHang(Guid id)
 		{
-			return Content("Đơn đặt hàng thành công");
+			var hoa = hoaService.GetHoaByID(id);
+			var cart = _themghService.GetCartItems(HttpContext.Session);
+			var cartitem = cart.Find(p => p.IdHoa == id);
+			
+
+			if (hoa == null)
+			{
+				return NotFound("Không có sản phẩm này");
+			}
+			else
+			{
+				hoaService.SLuongSauMua(hoa, cartitem.SoLuong);
+
+				_themghService.ClearCart(HttpContext.Session);
+			}
+
+			return RedirectToAction("Cart");
 		}
-	}
+
+		public IActionResult Clear()
+		{
+            _themghService.ClearCart(HttpContext.Session);
+            return RedirectToAction("Cart");
+        }
+
+    }
 }

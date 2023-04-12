@@ -30,12 +30,13 @@
                 <td><input type="number" min="1" max=@cartitem.DonGiaKhiGiam asp-for="@cartitem.SoLuong" id="@($"quantity-{cartitem.IdHoa}")" /></td>
                 <td>@(thanhtien.ToString("n0"))</td>
                 <td>
-                    <a class="btn btn-success updatecartitem"
+                    <a class="updatecartitem"
                     data-productid="@cartitem.IdHoa">
                         @Html.ActionLink("Cập nhật", "UpdateCart","Cart", new {id=cartitem.IdHoa }) |
                     </a>
                     @Html.ActionLink("Xóa", "RemoveCart","Cart", new {id=cartitem.IdHoa }) |
                 </td>
+                <a>@Html.ActionLink("Đặt hàng", "DatHang","Cart", new {id=cartitem.IdHoa})</a>
             </tr>
         }
         <tr>
@@ -43,26 +44,28 @@
             <td>@(total.ToString("n0"))</td>
             <td></td>
         </tr>
+        
     </table>
 
-    <a asp-controller="Product" asp-action="Checkout" class="btn btn-success">Gửi đơn hàng</a>
+    <a>@Html.ActionLink("Làm trống giỏ hàng", "Clear","Cart", new {/*id=cartitem.IdHoa*/})</a>
+
 
     @section Scripts {
     <script>
         $(document).ready(function () {
-            $(".updatecartitem").click(function (event) {
+            $("cart/updatecartitem").click(function (event) {
                 event.preventDefault();
                 var productid = $(this).attr("data-productid");
-                var SoLuong = $("#SoLuong-" + productid).val();
+                var quantity = $("quantity-" + productid).val();
                 $.ajax({
                     type: "POST",
                     url: "@Url.Action("/Cart/Updatecart")",
                     data: {
                         productid: productid,
-                        SoLuong: SoLuong
+                        quantity: quantity
                     },
                     success: function (result) {
-                        window.location.href = "@Url.Action("Ccart/Updatecart")";
+                        window.location.href = "@Url.Action("Cart/Updatecart")";
                     }
                 });
             });

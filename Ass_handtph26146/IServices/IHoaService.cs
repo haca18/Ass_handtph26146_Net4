@@ -14,5 +14,6 @@ namespace Ass_handtph26146.IServices
         public Hoa GetHoaByID(Guid id);
         public List<Hoa> GetHoaByName(string name);
 
+        public void SLuongSauMua(Hoa p, int soLuong);
     }
 }
