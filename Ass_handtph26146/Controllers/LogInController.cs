@@ -22,6 +22,27 @@ namespace Ass_handtph26146.Controllers
             khServices = new KhachHangService();
         }
 
+        public IActionResult Index()
+        {
+           
+            return View();
+
+        }
+        [HttpPost]
+        public IActionResult Index(NhanVien nv)
+        {
+
+            if (nvServices.LoginNV(nv.Ten, nv.MatKhau))
+            {
+                return RedirectToAction("Index2");
+            }
+            return View() ;
+        }
+
+        public IActionResult Index2()
+        {
+            return View();
+        }
         public IActionResult NhanVien()
         {
             List<NhanVien> nvs = nvServices.GetAllNv();
@@ -64,6 +85,8 @@ namespace Ass_handtph26146.Controllers
             var nv = hoaDbContext.NhanViens.Find(id);
             return View(nv);
         }
+
+
 
     }
 }

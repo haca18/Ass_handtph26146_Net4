@@ -1,0 +1,19 @@
+﻿<link href="~/css/login.css" rel="stylesheet" />
+@using Ass_handtph26146.Models;
+@model NhanVien
+
+
+<form method="post" action="~/LogIn/Index" class="box">
+    <H1>ĐĂNG NHẬP TÀI KHOẢN</H1>
+    <div>
+        <label>Username: </label>
+        @Html.TextBoxFor(p=>p.Ten, new { @class = "form-control" } )
+        @Html.ValidationMessageFor(Model=>Model.Ten,"", new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Pass: </label>
+        @Html.TextBoxFor(p=>p.MatKhau, new { @class = "form-control" } )
+        @Html.ValidationMessageFor(Model=>Model.MatKhau,"", new { @class = "form-control" })
+    </div>
+    <input type="submit" value="ĐĂNG NHẬP">
+</form>

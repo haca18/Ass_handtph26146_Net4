@@ -13,5 +13,6 @@ namespace Ass_handtph26146.IServices
 		public List<NhanVien> GetAllNv();
 		public NhanVien GetNvByID(Guid id);
 		public List<NhanVien> GetNvByName(string name);
+		public bool LoginNV(string user, string pass);
 	}
 }

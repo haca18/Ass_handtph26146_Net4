@@ -75,6 +75,13 @@ namespace Ass_handtph26146.Controllers
 
             return View(hoa);
         }
+		public IActionResult DetailsNV(Guid id)
+		{
+			HoaDBContext hoaDbContext = new HoaDBContext();
+			var hoa = hoaDbContext.Hoas.Find(id);
 
-    }
+			return View(hoa);
+		}
+
+	}
 }

@@ -1,8 +1,12 @@
 ﻿@model Ass_handtph26146.Models.Hoa
-
+<style>
+	.row {
+		margin-left: 50px;
+	}
+</style>
 @{
 	ViewData["Title"] = "Details";
-	
+	Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
 <h2>Chi tiết sản phẩm</h2>
@@ -15,13 +19,14 @@
 	<p><trong>Số lượng hàng còn: </trong>@Html.DisplayFor(model => model.SoLuongTon) </p>
 	<p><trong>Giá bán: </trong>@Html.DisplayFor(model => model.GiaNhap) </p>
 
-	
-	
+
+
 </div>
 
 <div class="row">
-
-	@Html.ActionLink("AddToCart", "AddCart","Cart", new {id=Model.Id }) |
+	@Html.ActionLink("Edit", "Edit", new {id=Model.Id }) |
+	
+	
 	<a asp-action="Hoa">Back to List</a>
 </div>
 

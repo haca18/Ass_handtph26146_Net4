@@ -42,10 +42,10 @@
 					<img src="~/images/images/logo.png"></a></div>
 				<div class="menu_main" style="background-color:forestgreen">
 					<ul>
-						<li class="active"><a href="/Home/Index2">Home</a></li>
-						<li><a href="/Introduct/About">About</a></li>
-						<li><a href="/SanPham/Hoa">Flowers Services</a></li>
-						<li><a href="blog.html">Cart Blog</a></li>
+						<li class="active"><a href="/LogIn/Index2">Home</a></li>
+						<li><a href="/SanPham/Hoa">Hoa</a></li>
+						<li><a href="/LogIn/NhanVien">Nhân Viên</a></li>
+						<li><a href="blog.html">Khách Hàng</a></li>
 						<li><a href="/Introduct/Contact">Contact us</a></li>
 					</ul>
 				</div>
@@ -84,6 +84,7 @@
 	<!-- header section end -->
 	<div class="center_content">
 		@RenderBody()
+
 	</div>
 	<!-- footer section start -->
 	<div class="footer_section layout_padding">
@@ -128,5 +129,6 @@
 	<!-- javascript -->
 	<script src="~/js/js/owl.carousel.js"></script>
 	<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+	@RenderSection("scripts", required:false)
 </body>
 </html>
