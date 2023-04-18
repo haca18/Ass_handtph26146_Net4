@@ -1,7 +1,13 @@
 ﻿@model Ass_handtph26146.Models.Hoa
 
+<style>
+    .row{
+        margin-left:50px;
+    }
+</style>
 @{
     ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
 <h1>Edit</h1>
@@ -57,11 +63,13 @@
             </div>
         </form>
     </div>
+   
+</div>
+<div class="row">
+    <a asp-action="Hoa">Back to List</a>
 </div>
 
-<div>
-    <a asp-action="ShowListHoa">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
